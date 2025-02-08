@@ -27,13 +27,23 @@ const musicCatalog = () => {
    * Adds a new playlist to the catalog.
    * @param {string} playlistName - The name of the new playlist.
    */
-  const createPlaylist = (playlistName) => {};
+  const createPlaylist = (playlistName) => {
+     return playlists = 
+     [
+        ...playlists,{
+          name:playlistName, 
+          songs:[] 
+        }
+      ]
+  };
 
   /**
    * Gets all playlists in the catalog.
    * @returns {Playlist[]} The list of all playlists.
    */
-  const getAllPlaylists = () => {};
+  const getAllPlaylists = () => {
+    return playlists
+  };
 
   /**
    * Removes a playlist from the catalog.
@@ -47,7 +57,17 @@ const musicCatalog = () => {
    * @param {{ title: string, artist: string, genre: string, duration: number }} song - The song to add to the playlist.
    * @throws {Error} If the playlist is not found.
    */
-  const addSongToPlaylist = (playlistName, song) => {};
+  const addSongToPlaylist = (playlistName, song) => {
+    const addSong = playlists.find(({name})=> name === playlistName)
+    if (!addSong){
+      throw new Error('Product no found')
+    }
+    playlists = playlists.map(playlist => 
+      playlist.name === playlistName
+        ? { ...playlist, songs: [...playlist.songs, { ...song, favorite: false }] }
+        : playlist
+    );
+  };
 
   /**
    * Removes a song from a specific playlist.
