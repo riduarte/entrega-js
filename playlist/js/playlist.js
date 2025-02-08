@@ -49,7 +49,10 @@ const musicCatalog = () => {
    * Removes a playlist from the catalog.
    * @param {string} playlistName - The name of the playlist to remove.
    */
-    const removePlaylist = (playlistName) => {};
+    const removePlaylist = (playlistName) => {
+      playlists = playlists.filter(({name})=>name !== playlistName)
+     
+    };
 
   /**
    * Adds a song to a specific playlist.
@@ -62,8 +65,8 @@ const musicCatalog = () => {
     if (!addSong){
       throw new Error('Product no found')
     }
-    playlists = playlists.map(playlist => 
-      playlist.name === playlistName
+       playlists = playlists.map(playlist => 
+        playlist.name === playlistName
         ? { ...playlist, songs: [...playlist.songs, { ...song, favorite: false }] }
         : playlist
     );
