@@ -68,7 +68,7 @@ const musicCatalog = () => {
        playlists = playlists.map(playlist => 
         playlist.name === playlistName
         ? { ...playlist, songs: [...playlist.songs, { ...song, favorite: false }] }
-        : playlist
+        : {...playlist}
     );
     return playlists
   };
@@ -89,7 +89,7 @@ const musicCatalog = () => {
         throw new Error('Song not found in playlist');
     }
     playlists = playlists.map(({ name, songs }) => name !== playlistName
-    ? { ...playlist } 
+    ? { ...playlists } 
     : { 
         ...playlist, 
         songs: songs.filter(song => song.title !== title)
@@ -101,7 +101,17 @@ const musicCatalog = () => {
    * @param {string} playlistName - The name of the playlist containing the song.
    * @param {string} title - The title of the song to mark as a favorite.
    */
-  const favoriteSong = (playlistName, title) => {};
+  const favoriteSong = (playlistName, title) => {
+
+    playlists = playlists.map((playlist)=>playlist.name === playlistName ?
+    {...playlist,
+      songs: playlist.songs.map((song)=>song.title === title
+        ? { ...song, favorite: !song.favorite}
+        :song)
+    }
+    :playlist
+  )
+  };
 
   /**
    * Sorts songs in a specific playlist by a given criterion (title, artist, or duration).
