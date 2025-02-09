@@ -1,6 +1,7 @@
 const input = 10;
 const convertNumber = (number) =>{
     const toStringNumber = number.toString().split('').join('-')
+    console.log(toStringNumber)
     return toStringNumber
 }
 convertNumber(input); // '1-0'

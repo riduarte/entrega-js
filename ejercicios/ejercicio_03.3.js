@@ -2,6 +2,7 @@ const input1 = 'string';
 const darVuelta = (word)=>{
     let reverseWord = word.split('').reverse().join('')
     let infWord = `${word.length} ${reverseWord}`
+    console.log(infWord)
     return infWord
 }
 darVuelta(input1); // '6 gnirts'

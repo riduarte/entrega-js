@@ -1,7 +1,7 @@
 const createUrl = (words)=>{
 
-let endPoint ='.'+ words.slice(words.length -1)
-let newUrl = words.join('/') + endPoint
+const endPoint ='.'+ words.slice(words.length -1)
+let newUrl = words.slice(0,words.length -1).join('/').concat(endPoint)
 return newUrl   
 }
 
@@ -12,14 +12,14 @@ const input1 = [
     'mp4',
     ]
     // create your function here
-createUrl(input1); // 'Downloads/Videos/capture.mp4'
+const uno = createUrl(input1); // 'Downloads/Videos/capture.mp4'
 
 const input2 = [
     'CodinGame',
     'python',
     'py',
     ];
-createUrl(input2); // 'CodinGame/python.py'
+    const dos =createUrl(input2); // 'CodinGame/python.py'
 
 const input3 = [
     'programming',
@@ -30,5 +30,9 @@ const input3 = [
     'pythonstuff',
     'py',
     ]
-createUrl(input3);
+const tres =createUrl(input3);
     // 'programming/languages/easy/beginner/useful/pythonstuff.py'
+
+    console.log(uno)
+    console.log(dos)
+    console.log(tres)
